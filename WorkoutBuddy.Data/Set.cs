@@ -1,6 +1,6 @@
 ﻿namespace WorkoutBuddy.Data
 {
-    public class Sets
+    public class Set
     {
         public int Id { get; set; }
 

@@ -14,6 +14,6 @@
 
         public double Weight { get; set; }
 
-        public List<Sets> Sets { get; set; }
+        public List<Set> Sets { get; set; }
     }
 }
