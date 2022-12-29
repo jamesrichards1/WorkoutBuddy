@@ -9,6 +9,14 @@ namespace WorkoutBuddy.Data
 {
     public class WorkoutBuddyContext : DbContext
     {
+        public WorkoutBuddyContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public WorkoutBuddyContext()
+        {
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
