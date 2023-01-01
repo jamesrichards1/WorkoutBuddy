@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using WorkoutBuddy.Core;
 using WorkoutBuddy.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,25 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<WorkoutBuddyContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("WorkoutBuddy")));
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = builder.Configuration.GetValue<string>("WorkoutBuddy.Identity:Authority");
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("PublicApiScope", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("scope", Constants.Auth.ApiScopes.PublicApi);
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,16 +42,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    var context = services.GetRequiredService<WorkoutBuddyContext>();
-    context.Database.EnsureCreated();
-}
-
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
