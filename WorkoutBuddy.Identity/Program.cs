@@ -1,6 +1,8 @@
 ﻿using WorkoutBuddy.Identity;
 using Serilog;
 
+var ignoredExceptions = new List<string> { "HostAbortedException", "StopTheHostException" };
+
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateBootstrapLogger();
@@ -24,7 +26,10 @@ try
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Unhandled exception");
+    if (!ignoredExceptions.Contains(ex.GetType().Name))
+    {
+        Log.Fatal(ex, "Unhandled exception");
+    }
 }
 finally
 {

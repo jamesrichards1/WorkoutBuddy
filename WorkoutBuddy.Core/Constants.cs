@@ -16,6 +16,11 @@
                 public const string PublicApi = "wbPubApi";
                 public const string PublicApiDisplayName = "WorkoutBuddy Public api";
             }
+
+            public static class Claims
+            {
+                public const string User = "user";
+            }
         }
     }
 }
