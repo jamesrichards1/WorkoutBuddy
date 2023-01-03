@@ -17,9 +17,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkoutBuddy.Client.React",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkoutBuddy.Identity", "WorkoutBuddy.Identity\WorkoutBuddy.Identity.csproj", "{4A6FF1D2-2601-426B-AF31-6B89813CAF8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutBuddy.Core", "WorkoutBuddy.Core\WorkoutBuddy.Core.csproj", "{219FB302-2923-4A36-B2F7-0B5033FA8A2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkoutBuddy.Core", "WorkoutBuddy.Core\WorkoutBuddy.Core.csproj", "{219FB302-2923-4A36-B2F7-0B5033FA8A2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutBuddy.TestAuthClient", "WorkoutBuddy.TestAuthClient\WorkoutBuddy.TestAuthClient.csproj", "{3A2EB84E-7CB1-43C7-8859-292516688E81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkoutBuddy.TestAuthClient", "WorkoutBuddy.TestAuthClient\WorkoutBuddy.TestAuthClient.csproj", "{3A2EB84E-7CB1-43C7-8859-292516688E81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4610C0BD-3329-4166-833C-1437280C9949}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
